@@ -1,12 +1,12 @@
 # 🎓 Student Performance Prediction
 
-End-to-end machine learning project that predicts a secondary school student's **final grade (G3)** and **pass/fail outcome** using only demographic, social and school-related attributes — with a live interactive demo.
+End-to-end machine learning project that predicts a secondary school student's **final grade (G3)** and **pass/fail outcome** using only demographic, social and school-related attributes — with a local Streamlit demo.
 
 📊 **Dataset:** [UCI Student Performance](https://archive.ics.uci.edu/ml/datasets/student+performance) (Cortez & Silva, 2008) · 382 students who attended both math & Portuguese courses (canonical merge from the original study)
 
 ---
 
-## 🚀 Live demo (Streamlit)
+## Run the Streamlit app locally
 
 ```bash
 pip install -r requirements.txt
@@ -23,7 +23,7 @@ Input a student profile (study time, absences, family support, alcohol habits…
 
 ### Classification — predict pass/fail (G3 ≥ 10)
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+| Model | Accuracy | Pass precision | Pass recall | Pass F1 | ROC-AUC |
 |---|---|---|---|---|---|
 | **Random Forest** | **81.8%** | **83.1%** | **96.7%** | **0.894** | **0.704** |
 | Logistic Regression | 76.6% | 80.3% | 93.4% | 0.864 | 0.661 |
@@ -70,14 +70,9 @@ jupyter notebook notebooks/01-eda-and-modeling.ipynb
 
 ---
 
-## 🔑 Key findings (interview talking points)
+## Limitations and next experiment
 
-1. **Random Forest consistently beats linear baselines** on both tasks — captures non-linear interactions (e.g., absences × study time).
-2. **Top predictors:** past failures, absences, study time, and weekend alcohol consumption — matching educational research literature.
-3. **No-leakage design:** predicting without prior grades keeps the problem honest; the pass/fail classifier is practical and deployable.
-4. **79% pass rate baseline** — the classifier's 81.8% accuracy with 96.7% recall means it catches almost all at-risk students.
-
----
+At the default threshold, the random forest flagged 4 of 16 failing students and missed 12. It also flagged 2 of 61 passing students. The 96.7% recall in the table describes the Pass class. For an early-warning use case, tune the threshold on a validation set and compare missed failures with false alarms on separate test data.
 
 ## 📚 References
 
