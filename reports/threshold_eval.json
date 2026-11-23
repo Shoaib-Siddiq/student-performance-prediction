@@ -1,0 +1,16 @@
+{
+  "default": {
+    "threshold": 0.5,
+    "correct_pass": 59,
+    "false_alarm": 2,
+    "missed_fail": 12,
+    "detected_fail": 4
+  },
+  "training_cv_fail_f1": {
+    "threshold": 0.35,
+    "correct_pass": 56,
+    "false_alarm": 5,
+    "missed_fail": 10,
+    "detected_fail": 6
+  }
+}

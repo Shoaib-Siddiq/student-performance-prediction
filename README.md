@@ -72,7 +72,11 @@ jupyter notebook notebooks/01-eda-and-modeling.ipynb
 
 ## Limitations and next experiment
 
-At the default threshold, the random forest flagged 4 of 16 failing students and missed 12. It also flagged 2 of 61 passing students. The 96.7% recall in the table describes the Pass class. For an early-warning use case, tune the threshold on a validation set and compare missed failures with false alarms on separate test data.
+At the default threshold, the random forest flagged 4 of 16 failing students and missed 12. It also flagged 2 of 61 passing students. The 96.7% recall in the table describes the Pass class. The experiment below evaluates the trade-off when the threshold is selected using training data.
+
+### Threshold experiment
+
+Using five-fold out-of-fold predictions on the training split, maximizing Fail-class F1 selected a failure-probability threshold of 0.35. On the original 77-row test split, this caught 6/16 failures with 5 false alarms. The default 0.50 threshold caught 4/16 with 2 false alarms. This is a retrospective comparison on a previously inspected split. Run `python -m src.threshold_eval` from the repository root. [Counts](reports/threshold_eval.json)
 
 ## 📚 References
 
